@@ -2,3 +2,8 @@ spring:
   redis:
     url: redis://root@127.0.0.1:6379
     username: root
+
+
+ttl:
+  maxTime: 20
+  minTime: 10

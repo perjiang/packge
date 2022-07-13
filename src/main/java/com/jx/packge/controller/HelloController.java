@@ -1,5 +1,6 @@
 package com.jx.packge.controller;
 
+import com.jx.packge.TtlConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,9 @@ public class HelloController {
     @Autowired
     private RedisTemplate<String,String> redisTemplate;
 
+    @Autowired
+    TtlConfig ttlConfig;
+
     @GetMapping("/hello")
     public String hello(){
         return "hello";
@@ -41,5 +45,14 @@ public class HelloController {
     @GetMapping("redis/{k}")
     public String redis(@PathVariable(value = "k")String key){
         return redisTemplate.opsForValue().get(key);
+    }
+
+    @GetMapping("/ttl")
+    public String ttl(){
+        return ttlConfig.toString();
+    }
+
+    public void play(){
+        System.out.println("play");
     }
 }
