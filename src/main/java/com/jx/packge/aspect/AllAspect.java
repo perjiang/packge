@@ -2,10 +2,9 @@ package com.jx.packge.aspect;
 
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.Signature;
+import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.aspectj.weaver.ast.Var;
 import org.springframework.stereotype.Component;
@@ -59,6 +58,19 @@ public class AllAspect {
         Object[] args = joinPoint.getArgs();
         Method method = methodSignature.getMethod();
 
+    }
+
+
+    @Around("testApiAspect()")
+    public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
+        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+        Method method = signature.getMethod();
+        Object[] args = joinPoint.getArgs();
+
+        if (method.getName().equals("test")) {
+            args[0] = (int) args[0] + 100;
+        }
+        return joinPoint.proceed(args);
     }
 
 }
