@@ -15,15 +15,6 @@ import java.util.Date;
  */
 public class TestMonth {
     public static void main(String[] args) {
-        Calendar calendar = Calendar.getInstance();
-        LocalDate date = LocalDate.now();
-        LocalDate before = date.minusMonths(-1);
-        System.out.println(before.with(TemporalAdjusters.lastDayOfMonth()).getDayOfMonth());
-        calendar.setTime(new Date());
-        int max = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
-        System.out.println(max);
-        System.out.println(max);
-        System.out.println(max);
-        System.out.println(max);
+        System.out.println("aaaaa");
     }
 }
