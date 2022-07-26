@@ -22,5 +22,8 @@ public class TestMonth {
         calendar.setTime(new Date());
         int max = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
         System.out.println(max);
+        System.out.println(max);
+        System.out.println(max);
+        System.out.println(max);
     }
 }
